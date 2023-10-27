@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
 
 const menuList = [
   { name: "[0] Home", path: "/" },
@@ -27,12 +27,10 @@ export const Header = () => {
 };
 
 const MenuItem = ({ name, path }) => {
-  const location = useLocation();
+  const isActive = path === "/";
 
-  const isActive = location.pathname === path;
-  
   return (
-    <Link to={`${path}`}>
+    <a href={`#${path}`}>
       <div
         className={`${
           isActive ? "nav-active-menu bg-primary text-secondary" : ""
@@ -40,6 +38,6 @@ const MenuItem = ({ name, path }) => {
       >
         {name}
       </div>
-    </Link>
+    </a>
   );
 };
